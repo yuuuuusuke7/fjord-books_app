@@ -220,3 +220,10 @@ ja:
       notice_create: "%{name}が作成されました。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+  views:
+    pagination:
+      first: 最初
+      previous: 前
+      truncate: …
+      next: 次
+      last: 最後
