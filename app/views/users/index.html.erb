@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= User.human_attribute_name(:postcode) %></th>
+      <th><%= User.human_attribute_name(:address) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+      <th><%= User.human_attribute_name(:introduction) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.postcode %></td>
+        <td><%= user.address %></td>
+        <td><%= user.email %></td>
+        <td><%= user.introduction %></td>
+        <td><%= link_to t('views.common.show'), user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @users %>
+<br>
+<%= link_to t('views.common.account_edit'), edit_user_registration_path %>
+<br>
+<%= link_to t('views.common.back'), books_path %>
