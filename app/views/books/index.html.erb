@@ -31,5 +31,6 @@
 <%= paginate @books %>
 <%= link_to t('views.common.logout'), destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
 <br>
-
+<%= link_to t('views.common.user_list'), users_path %>
+<br>
 <%= link_to t('views.common.new'), new_book_path %>
