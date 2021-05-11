@@ -65,3 +65,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'kaminari'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
