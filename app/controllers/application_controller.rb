@@ -10,4 +10,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name postcode address introduction])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name postcode address introduction])
   end
+
+  private
+
+  def after_sign_up_path_for(resource)
+    books_path
+  end
+
+  def after_sign_out_path_for(resource)
+    new_user_registration_path
+  end
 end
