@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @users.with_attached_avatar.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.name %></td>
