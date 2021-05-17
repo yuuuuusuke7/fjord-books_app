@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_one_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
@@ -14,5 +15,4 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
     end
   end
-  has_one_attached :avatar
 end
