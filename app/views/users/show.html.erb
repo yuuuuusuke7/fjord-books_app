@@ -34,8 +34,8 @@
 </p>
 
 <p>
-  <%= link_to User.human_attribute_name(:followers) + ":#{@user.followers.count}", followers_user_path(@user) %> |
-  <%= link_to User.human_attribute_name(:followings)  + ":#{@user.followings.count}", followings_user_path(@user) %>
+  <%= link_to User.human_attribute_name(:followings) + ":#{@user.followings.count}", followings_user_path(@user) %> |
+  <%= link_to User.human_attribute_name(:followers)  + ":#{@user.followers.count}", followers_user_path(@user) %>
 </p>
 
 <% unless @user == current_user %>
