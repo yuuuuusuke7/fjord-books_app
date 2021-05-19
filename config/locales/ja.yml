@@ -240,3 +240,6 @@ ja:
         title: "アカウント編集"
   unfollow: "フォロー解除"
   follow: "フォローする"
+  title:
+    followers: "フォローワー覧"
+    followings: "フォロー一覧"
