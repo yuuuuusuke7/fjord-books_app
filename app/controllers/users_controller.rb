@@ -14,6 +14,6 @@ class UsersController < ApplicationController
   end
 
   def followers
-      @followers = @user.followers
+    @followers = @user.followers
   end
 end
