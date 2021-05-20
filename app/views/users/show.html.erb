@@ -40,7 +40,8 @@
 
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
-    <%= button_to t('unfollow'), relationship_path(params[:id]), method: :delete %>
+    <% relationship = Relationship.find_by(follower_id: current_user, followed_id: @user) %>
+    <%= button_to t('unfollow'), relationship_path(relationship), method: :delete %>
   <% else %>
     <%= form_with(model: current_user.passive_relationships.build, local: true) do |f| %>
       <%= hidden_field_tag :followed_id, @user.id %>
