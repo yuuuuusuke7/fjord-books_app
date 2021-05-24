@@ -1,5 +1,5 @@
 <table>
-  <% follow_list.each do |user| %>
+  <% follow_list.with_attached_avatar.each do |user| %>
     <tr>
       <td>
         <% if user.avatar.attached? %>
