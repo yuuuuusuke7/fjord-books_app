@@ -4,6 +4,7 @@ ja:
       book: 本  #g
       user: ユーザ
       report: レポート
+      comment: コメント
 
     attributes:
       book:
@@ -20,3 +21,8 @@ ja:
       report:
         title: 題名
         body: 内容
+      comment:
+        body: コメント
+        email: メールアドレス
+        name: 名前
+        created: 投稿日時
