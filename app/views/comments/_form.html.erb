@@ -1,0 +1,7 @@
+<%= form_with model: [commentable, Comment.new] do |form| %>
+  <%= form.label :body %>
+  <%= form.text_field :body %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

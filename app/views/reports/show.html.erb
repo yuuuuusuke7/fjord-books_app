@@ -15,5 +15,14 @@
   <%= link_to t('views.common.destroy'),report_path, method: :delete,
   class: "btn btn-danger" ,data: { confirm: "削除してもいいですか？" } %>
 <% end %>
+
+<br>
+<h1><%= Comment.model_name.human %></h1>
+<%= render partial: 'comments/comments', locals: { commentable: @report } %>
+
+<br>
+<h1><%= t('views.common.title_new', name: Comment.model_name.human) %></h1>
+<%= render partial: 'comments/form', locals: { commentable: @report } %>
+
 <br>
 <%= link_to t('views.common.back'), reports_path %>
