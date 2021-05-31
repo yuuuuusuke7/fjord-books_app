@@ -6,7 +6,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    redirect_to url_for(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human) if @comment.save
+    if @comment.save
+      redirect_to url_for(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      redirect_to url_for(@commentable), notice: t('errors.messages.blank', name: Comment.model_name.human)
+    end
   end
 
   private
