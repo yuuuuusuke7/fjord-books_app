@@ -9,15 +9,16 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to url_for(@commentable), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      redirect_to url_for(@commentable), notice: t('errors.messages.blank', name: Comment.model_name.human)
+      render "#{@resource}/show", notice: t('errors.messages.empty', name: Comment.model_name.human)
     end
   end
 
   private
 
   def set_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
+    @resource, id = request.path.split('/')[1, 2]
+    @commentable = @resource.singularize.classify.constantize.find(id)
+    instance_variable_set("@#{@resource.singularize}", @commentable)
   end
 
   def comment_params
