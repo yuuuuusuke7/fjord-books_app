@@ -12,4 +12,20 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  OmniAuth.config.test_mode = true
+  def carol_auth
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+      {
+        provider: 'github',
+        uid: '12345',
+        info: {
+          name: 'carol',
+          email: 'carol@example.com'
+        },
+        credentials: {
+          token: Devise.friendly_token[0, 20]
+        }
+      }
+    )
+  end
 end
