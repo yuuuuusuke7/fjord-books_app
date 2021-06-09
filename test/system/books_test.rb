@@ -4,8 +4,6 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:cherry_book)
-
     visit root_path
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
@@ -27,20 +25,24 @@ class BooksTest < ApplicationSystemTestCase
     click_on '登録する'
 
     assert_text '本が作成されました。'
-    click_on '戻る'
+    assert_text 'Ruby超入門'
+    assert_text 'すごくわかりやすい！'
+    assert_text '五十嵐さん'
   end
 
   test 'updating a Book' do
     visit books_url
     click_link '編集'
 
-    fill_in 'タイトル', with: 'システムテスト'
-    fill_in 'メモ', with: '編集のシステムテスト'
-    fill_in '著者', with: 'yusuke'
+    fill_in 'タイトル', with: '楽々ERDレッスン'
+    fill_in 'メモ', with: '実在する帳票から本当に使えるテーブル設計を導く画期的な本！'
+    fill_in '著者', with: '羽生 章洋'
     click_on '更新する'
 
     assert_text '本が更新されました。'
-    click_on '戻る'
+    assert_text '楽々ERDレッスン'
+    assert_text '実在する帳票から本当に使えるテーブル設計を導く画期的な本！'
+    assert_text '羽生 章洋'
   end
 
   test 'destroying a Book' do
@@ -50,5 +52,8 @@ class BooksTest < ApplicationSystemTestCase
     end
 
     assert_text '本が削除されました。'
+    assert_not nil, 'プロを目指す人のためのRuby入門'
+    assert_not nil, '素晴らしい！！！'
+    assert_not nil, '伊藤さん'
   end
 end
