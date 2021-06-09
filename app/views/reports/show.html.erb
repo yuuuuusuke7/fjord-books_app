@@ -1,0 +1,28 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
+<p>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= @report.title %>
+</p>
+
+<p>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
+  <%= @report.body %>
+</p>
+
+<% if @report.user_id == current_user.id %>
+  <%= link_to t('views.common.edit'), edit_report_path(@report) %> |
+  <%= link_to t('views.common.destroy'),report_path, method: :delete,
+  class: "btn btn-danger" ,data: { confirm: t('views.common.delete_confirm', name: Report.model_name.human) } %>
+<% end %>
+
+<br>
+<h1><%= Comment.model_name.human %></h1>
+<%= render partial: 'comments/comments', locals: { commentable: @report } %>
+
+<br>
+<h1><%= t('views.common.title_new', name: Comment.model_name.human) %></h1>
+<%= render partial: 'comments/form', locals: { commentable: @report } %>
+
+<br>
+<%= link_to t('views.common.back'), reports_path %>
