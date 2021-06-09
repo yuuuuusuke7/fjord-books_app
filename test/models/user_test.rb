@@ -4,7 +4,21 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test '#self.from_omniauth' do
-    assert User.from_omniauth(carol_auth)
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+      {
+        provider: 'github',
+        uid: '12345',
+        info: {
+          name: 'carol',
+          email: 'carol@example.com'
+        },
+        credentials: {
+          token: Devise.friendly_token[0, 20]
+        }
+      }
+    )
+    assert User.from_omniauth(OmniAuth.config.mock_auth[:github])
   end
 
   test '#following_user' do
