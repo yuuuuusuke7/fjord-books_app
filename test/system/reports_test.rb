@@ -13,10 +13,12 @@ class ReportsTest < ApplicationSystemTestCase
   test 'visiting the index' do
     visit reports_url
     assert_selector 'h1', text: '日報'
+    assert_selector 'th', text: 'タイトル'
+    assert_selector 'th', text: '作成者'
+    assert_selector 'th', text: '作成日'
+    click_on '詳細', match: :first
     assert_text 'テストについて'
     assert_text 'alice@example.com'
-    assert_text 'テスト初日!!!'
-    assert_text 'bob'
   end
 
   test 'creating a Report' do
