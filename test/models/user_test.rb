@@ -26,22 +26,22 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#follow' do
-    me = User.create(email: 'me@example', password: 'password')
-    she = User.create(email: 'she@example', password: 'password')
+    alice = users('alice')
+    bob = users('bob')
 
-    assert_not me.following?(she)
-    me.follow(she)
-    assert me.following?(she)
+    assert_not alice.following?(bob)
+    alice.follow(bob)
+    assert alice.following?(bob)
   end
 
   test '#unfollow' do
-    me = User.create(email: 'me@example', password: 'password')
-    she = User.create(email: 'she@example', password: 'password')
+    alice = users('alice')
+    bob = users('bob')
 
-    me.follow(she)
-    assert me.following?(she)
-    me.unfollow(she)
-    assert_not me.following?(she)
+    alice.follow(bob)
+    assert alice.following?(bob)
+    alice.unfollow(bob)
+    assert_not alice.following?(bob)
   end
 
   test '#name_or_email' do
