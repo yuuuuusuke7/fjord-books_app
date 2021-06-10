@@ -47,13 +47,16 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit books_url
+    assert 'プロを目指す人のためのRuby入門'
+    assert '素晴らしい！！！'
+    assert '伊藤さん'
     page.accept_confirm do
       click_on '削除'
     end
 
     assert_text '本が削除されました。'
-    assert_not nil, 'プロを目指す人のためのRuby入門'
-    assert_not nil, '素晴らしい！！！'
-    assert_not nil, '伊藤さん'
+    assert 'プロを目指す人のためのRuby入門'.destroy? if nil
+    assert '素晴らしい！！！'.destroy? if nil
+    assert '伊藤さん'.destroy? if nil
   end
 end
