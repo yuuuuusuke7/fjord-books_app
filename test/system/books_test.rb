@@ -55,8 +55,8 @@ class BooksTest < ApplicationSystemTestCase
     end
 
     assert_text '本が削除されました。'
-    assert 'プロを目指す人のためのRuby入門'.destroy? if nil
-    assert '素晴らしい！！！'.destroy? if nil
-    assert '伊藤さん'.destroy? if nil
+    assert_no_text 'プロを目指す人のためのRuby入門'
+    assert_no_text '素晴らしい！！！'
+    assert_no_text '伊藤さん'
   end
 end
