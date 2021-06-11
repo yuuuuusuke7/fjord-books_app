@@ -52,15 +52,13 @@ class ReportsTest < ApplicationSystemTestCase
   test 'destroying a Report' do
     visit reports_url
     assert 'テストについて'
-    assert 'テスト初日!!!'
-    assert 'alice@example.com'
+    assert_text 'alice@example.com', maximum: 2
     page.accept_confirm do
       click_on '削除'
     end
 
     assert_text '日報が削除されました。'
-    assert 'テストについて'.destroy? if nil
-    assert 'テスト初日!!!'.destroy? if nil
-    assert 'alice@example.com'.destroy? if nil
+    assert_no_text 'テストについて'
+    assert_text 'alice@example.com', maximum: 1
   end
 end
