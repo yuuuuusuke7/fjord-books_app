@@ -15,10 +15,10 @@ class ReportsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: '日報'
     assert_text 'テストについて'
     assert_text 'alice@example.com'
-    assert_text '2021/06/13'
+    assert_text Date.current.strftime('%Y/%m/%d')
     assert_text 'テスト初日!!!'
     assert_text 'bob'
-    assert_text '2021/06/13'
+    assert_text Date.current.strftime('%Y/%m/%d')
   end
 
   test 'creating a Report' do
@@ -52,7 +52,7 @@ class ReportsTest < ApplicationSystemTestCase
   test 'destroying a Report' do
     visit reports_url
     assert_text 'テストについて'
-    within '.menu-container' do
+    within '.tbody-container' do
       assert_text 'alice@example.com'
     end
     page.accept_confirm do
@@ -61,8 +61,8 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が削除されました。'
     assert_no_text 'テストについて'
-    within '.menu-container' do
-      assert_text 'alice@example.com'
+    within '.tbody-container' do
+      assert_no_text 'alice@example.com'
     end
   end
 end
