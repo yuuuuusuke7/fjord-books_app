@@ -13,12 +13,12 @@ class ReportsTest < ApplicationSystemTestCase
   test 'visiting the index' do
     visit reports_url
     assert_selector 'h1', text: '日報'
-    assert_selector 'th', text: 'タイトル'
-    assert_selector 'th', text: '作成者'
-    assert_selector 'th', text: '作成日'
-    click_on '詳細', match: :first
     assert_text 'テストについて'
     assert_text 'alice@example.com'
+    assert_text '2021/06/13'
+    assert_text 'テスト初日!!!'
+    assert_text 'bob'
+    assert_text '2021/06/13'
   end
 
   test 'creating a Report' do
@@ -51,14 +51,18 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Report' do
     visit reports_url
-    assert 'テストについて'
-    assert_text 'alice@example.com', maximum: 2
+    assert_text 'テストについて'
+    within '.menu-container' do
+      assert_text 'alice@example.com'
+    end
     page.accept_confirm do
       click_on '削除'
     end
 
     assert_text '日報が削除されました。'
     assert_no_text 'テストについて'
-    assert_text 'alice@example.com', maximum: 1
+    within '.menu-container' do
+      assert_text 'alice@example.com'
+    end
   end
 end
