@@ -47,9 +47,9 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit books_url
-    assert 'プロを目指す人のためのRuby入門'
-    assert '素晴らしい！！！'
-    assert '伊藤さん'
+    assert_text 'プロを目指す人のためのRuby入門'
+    assert_text '素晴らしい！！！'
+    assert_text '伊藤さん'
     page.accept_confirm do
       click_on '削除'
     end
